@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dream Job - start of</title>
+		<style>
+			* {
+				margin: 0 ;
+				padding: 0 ;
+			}
+			#stage {
+				width:940px ;
+				height:581px ;
+				background: silver;
+				margin: 1em auto ;
+				display:none ;
+			}
+		</style>
+		<script src="assets/scripts/jquery.js"></script>
+		<script src="assets/scripts/jquery-ui.js"></script>
+		<script src="assets/scripts/jQuery.1.11.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#stage").fadeIn(900);			
+			});
+		</script>
+		<script>
+		$(document).ready(function(){
+			    // Answers to each question add these values to finalResult
+			var value = {
+			    'question0'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question1'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question2'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question3'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question4'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question5'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question6'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question7'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question8'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question9'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question10'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question11'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question12'   : { one: 1, two: 2, three: 3, four: 4 },
+			    'question13'   : { one: 1, two: 2, three: 3, four: 4 },
+			};
+
+			// The next question to present after each response
+			var END = null;
+			var nextQuestion = {
+			    'question0'   : { one: 'question1',   two: 'question1',  three: 'question1', four: 'question1',  },
+			    'question1'   : { one: 'question2',   two: 'question2',  three: 'question2', four: 'question2',  },
+			    'question2'   : { one: 'question3',   two: 'question3',  three: 'question3', four: 'question3',  },
+			    'question3'   : { one: 'question4',   two: 'question4',  three: 'question4', four: 'question4',  },
+			    'question4'   : { one: 'question5',   two: 'question5',  three: 'question5', four: 'question5',  },
+			    'question5'   : { one: 'question6',   two: 'question6',  three: 'question6', four: 'question6',  },
+			    'question6'   : { one: 'question7',   two: 'question7',  three: 'question7', four: 'question7',  },
+			    'question7'   : { one: 'question8',   two: 'question8',  three: 'question8', four: 'question8',  },
+			    'question8'   : { one: 'question9',   two: 'question9',  three: 'question9', four: 'question9',  },
+			    'question9'   : { one: 'question10',   two: 'question10',  three: 'question10', four: 'question10',  },
+			    'question10'   : { one: 'question11',   two: 'question11',  three: 'question11', four: 'question11',  },
+			    'question11'   : { one: 'question12',   two: 'question12',  three: 'question12', four: 'question12',  },
+			    'question12'   : { one: END,   two: END,  three: END, four: END,  },
+			};
+
+			// Show just the first question
+			$('.ques').hide();
+			$('#question0').fadeIn();
+
+			var outcome = 1;
+
+			$('.option').click(function(){
+			    var answer = $(this).attr('value');
+			    var question = $(this).attr('name');
+
+			    outcome += value[question][answer];
+
+			    $('#' + question).fadeOut(function(){
+			        var questionNext = nextQuestion[question][answer];
+			        if (questionNext == END) {
+			            var finalResult = 'result ' + outcome;
+			            alert("outcome : " + finalResult);
+			        } else {
+			            $('#' + questionNext).fadeIn();
+			        }
+			    });
+
+			});
+		});
+		</script>
+	</head>
+	<body>
+    	<div id="stage">
+
+			    <div class="ques" id="question0">
+			    <p>How would you describe yourself?</p>
+			        <div class="option" value="four" name="question0"><button>Creative</button></div>
+			        <div class="option" value="three" name="question0"><button>Techie</button></div>
+			        <div class="option" value="two" name="question0"><button>Thinker</button></div>
+			        <div class="option" value="one" name="question0"><button>Problem Solver</button></div>
+			    </div>
+	
+			    <div class="ques" id="question1">
+			    	<p>Which answer most describes you?</p>
+			        <div class="option" value="four" name="question1"><button>Long Attention Span</button></div>
+			        <div class="option" value="three" name="question1"><button>Average Attention Span</button></div>
+			        <div class="option" value="two" name="question1"><button>Low Attention Span</button></div>
+			        <div class="option" value="one" name="question1"><button>Very Short Attention Span</button></div>
+			    </div>
+
+			    <div class="ques" id="question2">
+			    	<p>When planning outings with friends do you?</p>
+			        <div class="option" value="four" name="question2"><button>Come up with ideas</button></div>
+			         <div class="option" value="three" name="question2"><button>Coordinate Travel Arrangements</button></div>
+			        <div class="option" value="two" name="question2"><button>Go with the group decision</button></div>
+			        <div class="option" value="one" name="question2"><button>Make any excuse to stay at home</button></div>
+			       
+			    </div>
+
+			     <div class="ques" id="question3">
+			    	<p>What draws your attention?</p>
+			        <div class="option" value="four" name="question3"><button>Flashing images</button></div>
+			        <div class="option" value="three" name="question3"><button>Words</button></div>
+			        <div class="option" value="two" name="question3"><button>Layout</button></div>
+			        <div class="option" value="one" name="question3"><button>Music</button></div>
+			    </div>
+
+			     <div class="ques" id="question4">
+			    	<p>What do you enjoy doing in your spare time?</p>
+			        <div class="option" value="four" name="question4"><button>Hanging out with friends</button></div>
+			        <div class="option" value="three" name="question4"><button>An activity</button></div>
+			        <div class="option" value="two" name="question4"><button>Going Online</button></div>
+			        <div class="option" value="one" name="question4"><button>Helping Others</button></div>
+			    </div>
+
+			    <div class="ques" id="question5">
+			    	<p>Do you play games?</p>
+			        <div class="option" value="four" name="question5"><button>Yes</button></div>
+			        <div class="option" value="three" name="question5"><button>threeasionally</button></div>
+			        <div class="option" value="two" name="question5"><button>No</button></div>
+			    </div>
+
+			    <div class="ques" id="question6">
+			    	<p>What Skills do you have?</p>
+			        <div class="option" value="four" name="question6"><button>Good at fixing things</button></div>
+			        <div class="option" value="three" name="question6"><button>Good research skills</button></div>
+			        <div class="option" value="two" name="question6"><button>Good communication skills</button></div>
+			        <div class="option" value="one" name="question6"><button>Billingual</button></div>
+			    </div>
+
+			    <div class="ques" id="question7">
+			    	<p>What subjects do you enjoy the most?</p>
+			        <div class="option" value="four" name="question7"><button>Maths</button></div>
+			        <div class="option" value="three" name="question7"><button>English</button></div>
+			        <div class="option" value="two" name="question7"><button>Art</button></div>
+			        <div class="option" value="one" name="question7"><button>IT</button></div>
+			    </div>
+
+			     <div class="ques" id="question8">
+			     	<p>Are you confident using the software on your computer?</p>
+			        <div class="option" value="four" name="question8"><button>Yes</button></div>
+			        <div class="option" value="three" name="question8"><button>Moderately</button></div>
+			        <div class="option" value="two" name="question8"><button>No</button></div>	
+			    </div>
+			    
+			     <div class="ques" id="question9">
+			    	<p>If you could create somthing fun what would it be?</p>
+			        <div class="option" value="four" name="question9"><button>A new computer game</button></div>
+			        <div class="option" value="three" name="question9"><button>An app</button></div>
+			        <div class="option" value="two" name="question9"><button>A Website</button></div>
+			        <div class="option" value="one" name="question9"><button>Latest tablet</button></div>
+			    </div>
+
+			    <div class="ques" id="question10">
+			    	<p>How would you approach a different situation?</p>
+			        <div class="option" value="four" name="question10"><button>Talk to people involved</button></div>
+			        <div class="option" value="three" name="question10"><button>Puzzle it out</button></div>
+			        <div class="option" value="two" name="question10"><button>Use your resources</button></div>
+			        <div class="option" value="one" name="question10"><button>By avoiding them</button></div>
+			    </div>
+
+			    <div class="ques" id="question11">
+			    	<p>The Ultimate goal of your dream job is to?</p>
+			        <div class="option" value="four" name="question11"><button>Invent the next big invention</button></div>
+			        <div class="option" value="three" name="question11"><button>Lead a team</button></div>
+			        <div class="option" value="two" name="question11"><button>Research Data</button></div>
+			        <div class="option" value="one" name="question11"><button>Work with inspiring people</button></div>
+			    </div>
+
+			     <div class="ques" id="question12">
+			    	<p>What most concerns you about being online?</p>
+			        <div class="option" value="four" name="question12"><button>Online Safety</button></div>
+			        <div class="option" value="three" name="question12"><button>Social Media</button></div>
+			        <div class="option" value="two" name="question12"><button>Current trends</button></div>
+			        <div class="option" value="one" name="question12"><button>Accurate Information</button></div>
+			    </div>
+
+			    <div class="ques" id="question13">
+			    	<p>At school I'm happiest when?</p>
+			        <div class="option" value="four" name="question13"><button>Challenging a problem</button></div>
+			        <div class="option" value="three" name="question13"><button>Researching a subject I'm interested in</button></div>
+			        <div class="option" value="two" name="question13"><button>Working with others</button></div>
+			        <div class="option" value="one" name="question13"><button>Doing something I am passionate about</button></div>
+			    </div>
+
+		</div>
+	</body>
+</html>
