@@ -3,10 +3,10 @@ $(document).ready(function(){
 	
 	var cloud1loop = function(){	
 		$("#cloud1").animate({
-			"left":-160,	
-		}, 50000, "linear", function(){
+			"right":-160,	
+		}, 80000, "linear", function(){
 			$(this).css({
-				"left":$("#stage").width()
+				"right":$("#stage").width()
 			});
 			cloud1loop();
 		});
@@ -15,10 +15,10 @@ $(document).ready(function(){
 
 	var cloud2loop = function(){	
 		$("#cloud2").animate({
-			"left":-151,	
-		}, 50000, "linear", function(){
+			"right":-151,	
+		}, 70000, "linear", function(){
 			$(this).css({
-				"left":$("#stage").width()
+				"right":$("#stage").width()
 			});
 			cloud2loop();
 		});
@@ -28,10 +28,10 @@ $(document).ready(function(){
 
 	var cloud3loop = function(){	
 		$("#cloud3").animate({
-			"left":-91,	
-		}, 100000, "linear", function(){
+			"right":-91,	
+		}, 90000, "linear", function(){
 			$(this).css({
-				"left":$("#stage").width()
+				"right":$("#stage").width()
 			});
 			cloud3loop();
 		});
@@ -40,29 +40,15 @@ $(document).ready(function(){
 
 	var cloud4loop = function(){	
 		$("#cloud4").animate({
-			"left":-212,	
-		}, 40000, "linear", function(){
+			"right":-212,	
+		}, 60000, "linear", function(){
 			$(this).css({
-				"left":$("#stage").width()
+				"right":$("#stage").width()
 			});
 			cloud4loop();
 		});
 	}
 	cloud4loop();
-
-
-
-
-	/*	$("#cloud2").animate({
-		"left":-$(this).width(),	
-	}, 100000, "linear");
-	$("#cloud3").animate({
-		"left":-$(this).width(),	
-	}, 100000, "linear");
-	$("#cloud4").animate({
-		"left":-$(this).width(),	
-	}, 100000, "linear");*/
-		
 	$("#logo img").delay(250).animate({
 		"width": 650,
 		"height": 343,
@@ -77,7 +63,18 @@ $(document).ready(function(){
 		}, 150, function(){
 			$("#stage").append("<div id='plane'></div>");
 			$("#plane").toggle("slide", {direction:"right"}, 1200, function(){
-				$("#ladder").animate({"top":0}, 500);
+				$("#ladder").animate({"top":0}, 500, function(){
+					var ladderloop = function(){
+						$("#ladder").animate({
+							"background-position-y":$("#stage").height()-5
+						},500, "linear", function(){
+							$(this).css({
+								"background-position-y":0
+							});
+						});
+					}
+					ladderloop();
+				});
 			});
 		});
 	});
